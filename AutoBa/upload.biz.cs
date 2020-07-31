@@ -388,8 +388,7 @@ namespace AutoBa
                                         upVo.fpVo.FRYTJ = "-";
                                     upVo.fpVo.FRYDATE = Function.Datetime(drrBa["FRYDATE"]).ToString("yyyy-MM-dd");
                                     upVo.fpVo.FRYTIME = drrBa["FRYTIME"].ToString();
-                                    if (upVo.fpVo.FRYTIME.Trim().Length < 4)
-                                        upVo.fpVo.FRYTIME = Function.Datetime(drrBa["FRYTIME"].ToString() + ":00:00").ToString("HH:mm:ss");
+                                    upVo.fpVo.FRYTIME = Function.Datetime(drrBa["FRYTIME"].ToString() + ":00:00").ToString("HH:mm:ss");
                                     upVo.fpVo.FRYTYKH = drrBa["FRYTYKH"].ToString();
                                     upVo.fpVo.FRYDEPT = drrBa["FRYDEPT"].ToString();
                                     upVo.fpVo.FRYBS = drrBa["FRYBS"].ToString().Trim();
@@ -398,8 +397,7 @@ namespace AutoBa
                                     upVo.fpVo.FZKTYKH = drrBa["FZKTYKH"].ToString();
                                     upVo.fpVo.FZKDEPT = drrBa["FZKDEPT"].ToString();
                                     upVo.fpVo.FZKTIME = drrBa["FZKTIME"].ToString();
-                                    if (upVo.fpVo.FZKTIME.Length < 4)
-                                        upVo.fpVo.FZKTIME = Function.Datetime(drrBa["FZKTIME"].ToString() + ":00:00").ToString("HH:MM:ss");
+                                    upVo.fpVo.FZKTIME = Function.Datetime(drrBa["FZKTIME"].ToString() + ":00:00").ToString("HH:MM:ss");
                                     upVo.fpVo.FCYDATE = Function.Datetime(drrBa["FCYDATE"]).ToString("yyyy-MM-dd");
 
                                     upVo.fpVo.FCYTIME = drrBa["FCYTIME"].ToString();

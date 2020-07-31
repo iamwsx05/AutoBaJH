@@ -860,10 +860,6 @@ namespace AutoBa
                         ExceptionLog.OutPutException("jzjlh-->" + ex);
 
                     }
-                    finally
-                    {
-                        DestroyInstance(intH);
-                    }
                 }
             }
             return lngRes;
@@ -998,10 +994,6 @@ namespace AutoBa
                 catch (Exception ex)
                 {
                     ExceptionLog.OutPutException(ex);
-                }
-                finally
-                {
-                    DestroyInstance(intH);
                 }
             }
             return lngRes;
