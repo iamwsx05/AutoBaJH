@@ -116,7 +116,7 @@ namespace AutoBa
                 {
                     try
                     {
-                        #region 入参
+                        #region 初始化
                         intH = CreateInstace();
                         if (intH > 0)
                         {
@@ -126,13 +126,25 @@ namespace AutoBa
                         }
 
                         item.JBR = exVo.JBR;
+                        item.firstMsg = "";
                         item.Issucess = -1; //-1 上传失败
                         if (item.firstSource == 0)
                         {
                             item.firstMsg = "无首页信息";
                             continue;
                         }
+                        if (item.firstSource == 1 || item.firstSource == 2)
+                        {
+
+                        }
+                        else
+                        {
+                            continue;
+                        }
                         jzjlh = item.JZJLH;
+                        #endregion
+
+                        #region log
                         string logStr = string.Empty;
                         logStr += "JZJLH:" + item.fpVo.JZJLH.ToString().Trim() + Environment.NewLine;//
                         logStr += "FWSJGDM:" + exVo.FWSJGDM + Environment.NewLine;//
@@ -300,17 +312,9 @@ namespace AutoBa
                         logStr += "ZYH:" + item.fpVo.ZYH.ToString() + Environment.NewLine;//
                         logStr += "FPHM:" + item.fpVo.FPHM.ToString() + Environment.NewLine;//
                         Log.Output(logStr);
+                        #endregion
 
-                        if (item.firstSource == 1 || item.firstSource == 2)
-                        {
-
-                        }
-                        else
-                        {
-                            continue;
-                        }
-
-
+                        #region 入参
                         intRet = SetParam(intH, "JZJLH", item.fpVo.JZJLH.ToString().Trim());//
                         intRet = SetParam(intH, "FWSJGDM", exVo.FWSJGDM);
                         intRet = SetParam(intH, "FFBBHNEW", item.fpVo.FFBBHNEW.ToString().Trim());//
@@ -880,6 +884,8 @@ namespace AutoBa
                     intH = CreateInstace();
                     if (intH > 0)
                     {
+                        #region 判断
+                        lstVo[i].FailMsg = "";
                         if (lstVo[i].xjVo == null)
                         {
                             lstVo[i].Issucess = -1; //-1 上传失败
@@ -893,6 +899,7 @@ namespace AutoBa
                             continue;
                         }
                         lstVo[i].Issucess = -1;
+                        #endregion
 
                         #region log
                         logStr = string.Empty;

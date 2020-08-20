@@ -57,7 +57,6 @@ namespace AutoBa
             exVo.FWSJGDM = ctlUploadSbPublic.strReadXML("DGCSZYYB", "FWSJGDM", "AnyOne");
             exVo.JBR = ctlUploadSbPublic.strReadXML("DGCSZYYB", "JBR", "AnyOne"); ;// 操作员工号
             string strPwd = ctlUploadSbPublic.strReadXML("DGCSZYYB", "PASSWORDZY", "AnyOne");
-            //this.Query();
             this.QueryFail();
         }
         #endregion
@@ -180,6 +179,7 @@ namespace AutoBa
                     UploadBiz biz = new UploadBiz();
                     dataSource = biz.GetPatList(dicParm);
                     this.gcData.DataSource = dataSource;
+                    this.gcData.RefreshDataSource();
                 }
                 else
                 {
@@ -192,7 +192,6 @@ namespace AutoBa
             }
         }
         #endregion
-
 
         #region QueryBa
         private void QueryBa()
@@ -253,6 +252,7 @@ namespace AutoBa
         internal void   QueryFail()
         {
             this.gcFailData.DataSource = new UploadBiz().GetFailPatList();
+            this.gcFailData.RefreshDataSource();
         }
         #endregion
 
@@ -358,7 +358,8 @@ namespace AutoBa
                         return;
 
                     isExecing = true;
-                    this.Exec(dateTime.AddDays(-30).ToString("yyyy-MM-dd"), dateTime.ToString("yyyy-MM-dd"));
+                    this.Exec(dateTime.AddDays(-15).ToString("yyyy-MM-dd"), dateTime.ToString("yyyy-MM-dd"));
+                    Init();
                 }
                 catch (Exception ex)
                 {
@@ -536,8 +537,7 @@ namespace AutoBa
         }
         #endregion
 
-        #endregion
-
+        #region
         private void btnQueryBa_Click(object sender, EventArgs e)
         {
             List<EntityQueryBa> dataBa = new List<EntityQueryBa>();
@@ -558,5 +558,8 @@ namespace AutoBa
             this.gcBa.DataSource = dataBa;
             this.gcIcare.DataSource = dataIcare;
         }
+        #endregion
+
+        #endregion
     }
 }
